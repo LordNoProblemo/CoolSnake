@@ -127,7 +127,7 @@ public class NetworkManager : MonoBehaviour
     {
         Debug.Log("Woof2");
         playernum = PhotonNetwork.room.playerCount;
-
+        Ui.gameObject.SetActive(false);
         if (PhotonNetwork.room.playerCount == 1)
         {
             GameObject snake1 = PhotonNetwork.Instantiate(playerPrefab1.name, new Vector3(-0.1f, 0.05f, 0), Quaternion.identity, 0);
@@ -177,10 +177,12 @@ public class NetworkManager : MonoBehaviour
             else
             {
                 snake1 = PhotonNetwork.Instantiate(playerPrefab2.name, new Vector3(+0.1f, 0.05f, 0), Quaternion.identity, 0);
-                PhotonView.Find(1001).transform.GetChild(0).gameObject.SetActive(false);
-                snake1.transform.GetChild(0).gameObject.SetActive(true);
-                PhotonView.Find(1001).transform.GetChild(0).gameObject.SetActive(false);
+                
+                
+               
             }
+            if(MenuScript.gameMode==Mode.Multiplayer_3D)
+                snake1.transform.GetChild(0).gameObject.SetActive(true);
             Debug.Log(snake1 == null);
            // GameObject cube = PhotonNetwork.Instantiate(Cube.name, new Vector3(+0.1f, -0.51f, 0), Quaternion.identity, 0);
             //cube.GetComponent<DataSend>().snake = snake1;

@@ -129,7 +129,7 @@ public class Snake : Photon.MonoBehaviour
                 }
                 foreach (ContactPoint i in other.contacts)
                 {
-                    if (i.normal.normalized == -dire)
+                    if (i.normal.normalized == -dire || MenuScript.gameMode==Mode.Multiplayer_3D)
                     {
                         enabled = false;
                         if (gameObject.tag == "Snake2")
